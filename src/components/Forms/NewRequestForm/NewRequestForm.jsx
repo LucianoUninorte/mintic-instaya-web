@@ -11,19 +11,19 @@ import {
 
 const initialValues = {
 	isFragile: true,
-	width: '1',
-	height: '1',
-	depth: '1',
-	weight: '1',
-	dueDate: '2022-12-01',
-	dueHour: '12:00:00',
-	state: 'guardado',
-	fromCity: 'Barranquilla',
-	fromAddress: 'Cra. 45 #53-127',
-	toCity: 'Santa Marta',
-	toAddress: 'Cl. 21 #2A-05',
-	toOwner: 'Pepé Santos',
-	toOwnerId: '12345678901',
+	width: '',
+	height: '',
+	depth: '',
+	weight: '',
+	dueDate: '',
+	dueHour: '',
+	state: '',
+	fromCity: '',
+	fromAddress: '',
+	toCity: '',
+	toAddress: '',
+	toOwner: '',
+	toOwnerId: '',
 };
 
 export const formFields = [
@@ -47,8 +47,8 @@ const hours_12 = [...Array(11).keys()].map((v) => v + 1);
 hours_12.unshift(12);
 
 const hours_24 = [
-	...hours_12.map((am) => `${am}`.padStart(2, '0') + 'am'),
-	...hours_12.map((pm) => `${pm}`.padStart(2, '0') + 'pm'),
+	...hours_12.map((am) => `${am}`.padStart(2, '0') + ' am'),
+	...hours_12.map((pm) => `${pm}`.padStart(2, '0') + ' pm'),
 ];
 
 const hourValues = [...Array(24).keys()].map(
@@ -160,7 +160,7 @@ export function NewRequestForm() {
 					onError={toggleFieldError}
 					inputProps={{
 						name: 'toOwner',
-						placeholder: 'Juanito Perez',
+						placeholder: 'Nombre Apellido',
 						required: true,
 					}}
 				/>
@@ -173,7 +173,7 @@ export function NewRequestForm() {
 					onError={toggleFieldError}
 					inputProps={{
 						name: 'toOwnerId',
-						placeholder: '12345678901',
+						placeholder: '1234567890',
 						required: true,
 					}}
 				/>
@@ -244,7 +244,7 @@ export function NewRequestForm() {
 					onError={toggleFieldError}
 					inputProps={{
 						name: 'width',
-						placeholder: '1',
+						placeholder: '000 cm',
 						required: true,
 					}}
 				/>
@@ -256,7 +256,7 @@ export function NewRequestForm() {
 					onError={toggleFieldError}
 					inputProps={{
 						name: 'height',
-						placeholder: '1',
+						placeholder: '000 cm',
 						required: true,
 					}}
 				/>
@@ -268,7 +268,7 @@ export function NewRequestForm() {
 					onError={toggleFieldError}
 					inputProps={{
 						name: 'depth',
-						placeholder: '1',
+						placeholder: '000 cm',
 						required: true,
 					}}
 				/>
@@ -281,7 +281,7 @@ export function NewRequestForm() {
 					onError={toggleFieldError}
 					inputProps={{
 						name: 'weight',
-						placeholder: '1',
+						placeholder: '0.00 Kg',
 						required: true,
 					}}
 				/>
@@ -290,26 +290,26 @@ export function NewRequestForm() {
 			{/* Origen */}
 			<div className="flex space-x-4">
 				<Field
-					label="Origen - ciudad"
+					label="Remitente - ciudad"
 					schema={fieldsSchema.shape.fromCity}
 					initialValue={initialValues.fromCity}
 					onUpdate={onFieldUpdate}
 					onError={toggleFieldError}
 					inputProps={{
 						name: 'fromCity',
-						placeholder: 'Barranquilla',
+						placeholder: 'Ciudad, municipio, pueblo...',
 						required: true,
 					}}
 				/>
 				<Field
-					label="Origen - dirección"
+					label="Dirección"
 					schema={fieldsSchema.shape.fromAddress}
 					initialValue={initialValues.fromAddress}
 					onUpdate={onFieldUpdate}
 					onError={toggleFieldError}
 					inputProps={{
 						name: 'fromAddress',
-						placeholder: 'Km 5, Vía Puerto Colombia',
+						placeholder: 'Calle 123 # 45 - 67 bloque 8 apt 910',
 						required: true,
 					}}
 				/>
@@ -318,26 +318,26 @@ export function NewRequestForm() {
 			{/* Destino */}
 			<div className="flex space-x-4">
 				<Field
-					label="Destino - ciudad"
+					label="Destinatario - ciudad"
 					schema={fieldsSchema.shape.toCity}
 					initialValue={initialValues.toCity}
 					onUpdate={onFieldUpdate}
 					onError={toggleFieldError}
 					inputProps={{
 						name: 'toCity',
-						placeholder: 'Santa Marta',
+						placeholder: 'Ciudad, municipio, pueblo...',
 						required: true,
 					}}
 				/>
 				<Field
-					label="Destino - dirección"
+					label="Dirección"
 					schema={fieldsSchema.shape.toAddress}
 					initialValue={initialValues.toAddress}
 					onUpdate={onFieldUpdate}
 					onError={toggleFieldError}
 					inputProps={{
 						name: 'toAddress',
-						placeholder: 'Cl. 21 #2A-05',
+						placeholder: 'Calle 109 # 87 - 65 bloque 4 apt 321',
 						required: true,
 					}}
 				/>
